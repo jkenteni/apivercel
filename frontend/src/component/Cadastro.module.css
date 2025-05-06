@@ -200,10 +200,6 @@ input:focus, select:focus {
     width: 98%;
     padding: var(--spacing-md);
   }
-  
-  .form-content {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 768px) {

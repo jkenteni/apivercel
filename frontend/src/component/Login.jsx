@@ -32,7 +32,7 @@ function Login() {
       <div className="login-container">
         <div className="welcome-panel">
           <div className="panel-content">
-            <h1 className="welcome-title">Olá!<br />Bem-Vindo!</h1>
+            <h1 className="welcome-title">Olá,<br />Bem-Vindo!</h1>
             <p className="welcome-description">
               Sistema desenvolvido para <strong>otimizar o processo de seleção de alunos</strong>,
               totalmente <strong>criado e implementado por estudantes</strong> da EEEP Padre Bosco de Lima.

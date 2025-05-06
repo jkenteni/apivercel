@@ -1,9 +1,1 @@
-function Notas() {
-    return(
-    <div>
-        <h1> Notas</h1>
-    </div>
-    )
-
-}
- export default Notas; 
+// File removed as it is unnecessary.
