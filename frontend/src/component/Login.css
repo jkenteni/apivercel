@@ -1,0 +1,202 @@
+/* Cores */
+:root {
+    --primary-green: #007a32;
+    --dark-green: #005a24;
+    --light-green: #00923f;
+    --white: #ffffff;
+    --input-border: #cccccc;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--light-green);
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 2.2em;
+    line-height: 1.1;
+  }
+
+/* Container Principal */
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-container {
+    display: flex;
+    width: 700px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Painel Esquerdo */
+.welcome-panel {
+    width: 50%;
+    background: var(--primary-green);
+    color: var(--white);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-title {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.welcome-description {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* Formulário de Login */
+.login-form {
+    width: 50%;
+    padding: 30px;
+    background: var(--white); /* Garante fundo branco */
+}
+
+.form-logo {
+    width: 80px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.login-form h2 {
+    color: var(--primary-green);
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.form-group label {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: #777;
+    background: var(--white);
+    padding: 0 5px;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -8px;
+    font-size: 12px;
+    color: var(--primary-green);
+    background: var(--white);
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background: var(--dark-green);
+}
+
+/* Botão Veja Mais */
+.see-more-btn {
+    background: #ffffff;
+    color: #007a32;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 45px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease-out;
+}
+
+.see-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease-out;
+    z-index: -1;
+    border-radius: 20px;
+}
+
+.see-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.see-more-btn:hover::before {
+    left: 0;
+}
+/* Remove aparência de links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Rodapé */
+.page-footer {
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .welcome-panel, .login-form {
+        width: 100%;
+    }
+}

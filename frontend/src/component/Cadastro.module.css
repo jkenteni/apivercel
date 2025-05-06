@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  /* Cores */
+  --primary-color: #007a32;
+  --primary-dark: #005a24;
+  --primary-light: #00923f;
+  --white: #ffffff;
+  --gray-light: #f5f5f5;
+  --gray-medium: #cccccc;
+  --text-dark: #333333;
+  
+  /* Espaçamentos */
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  
+  /* Bordas */
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 18px;
+  
+  /* Sombras */
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* Transições */
+  --transition-normal: 0.3s ease;
+}
+
+/* Reset e Estilos Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--primary-light);
+  color: var(--white);
+  padding: var(--spacing-md);
+}
+
+/* Container Principal Expandido */
+.container {
+  background: var(--white);
+  width: 95%;
+  max-width: 1400px; /* Aumentado para ocupar mais espaço */
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin: var(--spacing-md) 0;
+}
+
+/* Cabeçalho */
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  color: var(--primary-color);
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Formulário Expandido */
+.form-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+/* Seções do Formulário */
+.form-section {
+  background: var(--gray-light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+}
+
+/* Elementos do Formulário */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+label {
+  display: block;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid var(--gray-medium);
+  border-radius: var(--border-radius-sm);
+  background: var(--white);
+  color: var(--text-dark);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+}
+
+input:focus, select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 122, 50, 0.2);
+  outline: none;
+}
+
+/* Layouts Flexíveis */
+.flex-container {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.flex-container > div {
+  flex: 1;
+}
+
+/* Grade de Notas Expandida */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.grid-item {
+  text-align: center;
+  background: var(--white);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Área de Botões */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  flex: 1;
+  text-align: center;
+}
+
+.primary-button {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.primary-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button {
+  background: var(--gray-medium);
+  color: var(--text-dark);
+}
+
+.secondary-button:hover {
+  background: #b3b3b3;
+}
+
+/* Seção de Notas */
+.notas-container {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--gray-light);
+  border-radius: var(--border-radius-md);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .container {
+    width: 98%;
+    padding: var(--spacing-md);
+  }
+  
+  .form-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .button {
+    width: 100%;
+  }
+}
+
+/* Adicione isso ao seu arquivo CSS */
+
+/* Container do formulário */
+.form-group {
+    margin-bottom: 20px;
+  }
+  
+  /* Nome (ocupando linha inteira) */
+  .form-group .full-row {
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    width: 100%;
+  }
+  
+  /* CPF (abaixo do nome, linha inteira) */
+  .form-group #cpf-container {
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  /* Container para os selects lado a lado */
+  .select-row {
+    display: flex;
+    gap: 20px; /* Espaço entre os selects */
+    margin-top: 15px;
+    width: 100%;
+  }
+  
+  /* Cada select ocupa metade do espaço */
+  .select-row > div {
+    flex: 1;
+  }
+  
+  /* Estilização dos inputs e selects */
+  input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  
+  /* Efeito de foco */
+  input:focus, select:focus {
+    border-color: #007a32;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 122, 50, 0.2);
+  }
+
+.cadastroContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: #007a32;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fullRow {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  color: #007a32;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input:focus, .select:focus {
+  border-color: #007a32;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 122, 50, 0.2);
+}
+
+.selectRow {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.selectGroup {
+  flex: 1;
+}
+
+.button {
+  width: 100%;
+  padding: 16px;
+  background-color: #007a32;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #005a24;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+  
+  .selectRow {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .selectGroup {
+    width: 100%;
+  }
+}
