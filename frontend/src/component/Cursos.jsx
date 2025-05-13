@@ -42,7 +42,7 @@ function Cursos() {
       <div className={styles.container}>
         {/* Botão Voltar */}
         <button
-          className={styles.voltarBtn}
+          className={styles.buscaVoltarBtn}
           type="button"
           onClick={() => window.history.back()}
         >
@@ -50,18 +50,18 @@ function Cursos() {
         </button>
         <h2 className={styles.title}>Gerenciar Cursos</h2>
         <form onSubmit={handleAdd} className={styles.form} style={{marginBottom: 30}}>
-          <div className={styles.selectRow}>
-            <div className={styles.selectGroup}>
+          <div className={styles.flexContainer}>
+            <div className={styles.formGroup}>
               <label className={styles.label}>Nome do Curso</label>
               <input
                 className={styles.input}
                 value={nome}
                 onChange={e => setNome(e.target.value)}
                 required
-                placeholder="Ex: Agropecuária"
+                placeholder="Ex: Informática"
               />
             </div>
-            <div className={styles.selectGroup}>
+            <div className={styles.formGroup}>
               <label className={styles.label}>Sigla</label>
               <input
                 className={styles.input}
@@ -69,10 +69,16 @@ function Cursos() {
                 onChange={e => setSigla(e.target.value)}
                 required
                 maxLength={10}
-                placeholder="Ex: AGR"
+                placeholder="Ex: INF"
               />
             </div>
-            <button type="submit" className={styles.button} style={{maxHeight: 48, alignSelf: 'end'}}>Adicionar</button>
+            <button
+              type="submit"
+              className={styles.cadastraButton}
+              style={{maxHeight: 48, alignSelf: 'end'}}
+            >
+              Adicionar
+            </button>
           </div>
         </form>
         <h3 style={{marginBottom: 10}}>Cursos Cadastrados</h3>
@@ -94,7 +100,7 @@ function Cursos() {
                   <td>{curso.sigla}</td>
                   <td style={{textAlign: 'center'}}>
                     <button
-                      className={styles["excluir"]}
+                      className={styles.buscaExcluir}
                       onClick={() => handleDelete(curso.id)}
                     >
                       Excluir

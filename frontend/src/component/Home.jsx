@@ -86,7 +86,7 @@ function Home() {
             <span className={styles.navText}>Dashboard</span>
           </button>
           <button
-            className={styles.navItem}
+            className={`${styles.navItem} ${window.location.pathname === '/alunos' ? styles.active : ''}`}
             onClick={() => handleNav('alunos')}
           >
             <i className="fas fa-users"></i>

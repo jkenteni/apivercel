@@ -4,6 +4,7 @@ import Home from './component/Home';
 import Cadastro from './component/Cadastro';
 import PrivateRoute from './component/PrivateRoute';
 import Cursos from './component/Cursos';
+import Busca from './component/Busca';
 
 function Placeholder({ title }) {
   return (
@@ -31,7 +32,7 @@ function App() {
         } />
         <Route path="/alunos" element={
           <PrivateRoute>
-            <Placeholder title="Alunos" />
+            <Busca />
           </PrivateRoute>
         } />
         <Route path="/cursos" element={

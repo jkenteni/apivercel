@@ -176,6 +176,208 @@ input:focus, select:focus {
   border-radius: var(--border-radius-md);
 }
 
+/* ====== Busca (Pesquisa de Alunos) ====== */
+.buscaContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 2rem;
+}
+
+.buscaInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.buscaTitle {
+  color: #2d3748;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.buscaVoltarBtn {
+  background: none;
+  border: none;
+  color: #4a5568;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.buscaVoltarBtn:hover {
+  background-color: #edf2f7;
+}
+
+.buscaInput {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s;
+  background-color: #fff;
+}
+
+.buscaInput:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.buscaButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.cadastraButton {
+  padding: 0.75rem 1.5rem;
+  margin-top: 5%;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.cadastraButton:hover {
+  background-color: #3182ce;
+}
+
+
+.buscaButton:hover {
+  background-color: #3182ce;
+}
+
+.buscaExcluir {
+  padding: 0.4rem 0.9rem;
+  background-color: #e53e3e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 4px;
+}
+
+.buscaExcluir:hover {
+  background-color: #c53030;
+}
+
+.buscaSelect {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.buscaSelect:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Estilos da tabela de busca */
+.buscaTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.buscaTh {
+  background-color: #f7fafc;
+  color: #4a5568;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.buscaTd {
+  padding: 1rem;
+  border-bottom: 1px solid #edf2f7;
+  color: #4a5568;
+}
+
+.buscaTr:last-child .buscaTd {
+  border-bottom: none;
+}
+
+.buscaTr:hover .buscaTd {
+  background-color: #f8fafc;
+}
+
+
+.cadastroInner,
+.cadastroContainer > .container {
+  /* Aumenta a largura máxima do container de cadastro */
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem 2rem;
+}
+
+/* Novo container maior para CadastroPessoal */
+.cadastroPessoalContainer {
+  background: var(--white);
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .cadastroPessoalContainer {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
   .container {
@@ -196,209 +398,54 @@ input:focus, select:focus {
   .button {
     width: 100%;
   }
+  
+  .buscaInner {
+    padding: 1rem;
+  }
+  
+  .buscaInput, .buscaButton {
+    padding: 0.65rem 0.9rem;
+  }
 }
 
-/* Adicione isso ao seu arquivo CSS */
-
-/* Container do formulário */
-.form-group {
-    margin-bottom: 20px;
+/* Efeitos de loading */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
   }
-  
-  /* Nome (ocupando linha inteira) */
-  .form-group .full-row {
-    grid-column: 1 / -1; /* Ocupa todas as colunas */
-    width: 100%;
+  50% {
+    opacity: 0.5;
   }
-  
-  /* CPF (abaixo do nome, linha inteira) */
-  .form-group #cpf-container {
-    margin-top: 15px;
-    width: 100%;
-  }
-  
-  /* Container para os selects lado a lado */
-  .select-row {
-    display: flex;
-    gap: 20px; /* Espaço entre os selects */
-    margin-top: 15px;
-    width: 100%;
-  }
-  
-  /* Cada select ocupa metade do espaço */
-  .select-row > div {
-    flex: 1;
-  }
-  
-  /* Estilização dos inputs e selects */
-  input, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  
-  /* Efeito de foco */
-  input:focus, select:focus {
-    border-color: #007a32;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 122, 50, 0.2);
-  }
-
-.cadastroContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
 }
 
-.container {
-  background: white;
-  width: 100%;
-  max-width: 800px;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
-.title {
+@keyframes buscaPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.buscaLoading {
+  animation: buscaPulse 1.5s ease-in-out infinite;
+}
+
+/* Mensagem quando não há dados */
+.empty-message {
+  color: #718096;
+  font-style: italic;
   text-align: center;
-  color: #007a32;
-  font-size: 28px;
-  margin-bottom: 30px;
+  padding: 2rem;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.fullRow {
-  width: 100%;
-}
-
-.label {
-  display: block;
-  color: #007a32;
-  margin-bottom: 8px;
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.input, .select {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.input:focus, .select:focus {
-  border-color: #007a32;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 122, 50, 0.2);
-}
-
-.selectRow {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-}
-
-.selectGroup {
-  flex: 1;
-}
-
-.button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007a32;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  background-color: #005a24;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.excluir {
-  background-color: #ff4444; /* Vermelho */
-  color: white;
-  border: none;
-  margin-left: 35%;
-  margin-bottom: 5px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.excluir:hover {
-  background-color: #cc0000; /* Vermelho mais escuro no hover */
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
-
-.excluir:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-/* Botão de voltar */
-.voltarBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: linear-gradient(90deg, #45c11c 60%, #22b900 100%);
-  color: #333;
-  border: none;
-  border-radius: 7px;
-  padding: 8px 22px;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 18px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-  transition: background 0.2s, transform 0.15s;
-  text-decoration: none;
-}
-
-.voltarBtn:hover {
-  background: linear-gradient(90deg, #058b27 60%, #067800 100%);
-  color: #ffffff;
-  transform: translateY(-2px) scale(1.04);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .container {
-    padding: 30px;
-  }
-  
-  .selectRow {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .selectGroup {
-    width: 100%;
-  }
+.buscaEmptyMessage {
+  color: #718096;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
 }
