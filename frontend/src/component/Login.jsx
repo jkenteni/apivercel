@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Mantenha esse com o estilo novo
+import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -21,6 +21,9 @@ function Login() {
 
     if (resposta.ok) {
       localStorage.setItem('token', dados.token);
+      if (dados.nome) {
+        localStorage.setItem('admin_nome', dados.nome);
+      }
       navigate('/home');
     } else {
       setErro(dados.error || 'Erro no login');

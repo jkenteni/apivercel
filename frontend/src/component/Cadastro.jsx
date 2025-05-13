@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Cadastro.module.css'; // Ensure scoped styles are applied
+import styles from './Cadastro.module.css'; // Corrigido para importar como módulo
 import CadastroPessoal from './CadastroPessoal';
 
 function Cadastro() {
@@ -36,8 +36,17 @@ function Cadastro() {
   };
 
   return (
-    <div className="cadastro-container">
-      <CadastroPessoal onNext={handleNext} />
+    <div className={styles.cadastroContainer}>
+      <div className={styles.container}>
+        <button
+          className={styles.voltarBtn}
+          type="button"
+          onClick={() => window.history.back()}
+        >
+          &#8592; Voltar
+        </button>
+        <CadastroPessoal onNext={handleNext} />
+      </div>
     </div>
   );
 }

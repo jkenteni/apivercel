@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Cadastro.module.css';
 
 function CadastroPessoal({ onNext }) {
@@ -11,6 +11,16 @@ function CadastroPessoal({ onNext }) {
 
   // Estado para o CPF formatado visualmente
   const [cpfDisplay, setCpfDisplay] = useState('');
+
+  // Estado para a lista de cursos
+  const [cursos, setCursos] = useState([]);
+
+  // Efeito para buscar os cursos da API ao carregar o componente
+  useEffect(() => {
+    fetch('http://localhost:3000/api/cursos')
+      .then(res => res.json())
+      .then(data => setCursos(data));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +53,6 @@ function CadastroPessoal({ onNext }) {
       <div className={styles.container}>
         <h2 className={styles.title}>Cadastrar Aluno</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
-          {/* Nome - linha inteira */}
           <div className={styles.fullRow}>
             <label htmlFor="nome" className={styles.label}>Nome Completo:</label>
             <input
@@ -55,10 +64,10 @@ function CadastroPessoal({ onNext }) {
               pattern="[A-Za-zÀ-ÿçÇ\s]+"
               required
               className={styles.input}
+              placeholder="Digite o nome completo"
+              autoComplete="off"
             />
           </div>
-
-          {/* CPF - linha inteira abaixo do nome */}
           <div className={styles.fullRow}>
             <label htmlFor="cpf" className={styles.label}>CPF:</label>
             <input
@@ -71,11 +80,10 @@ function CadastroPessoal({ onNext }) {
               maxLength="14"
               required
               className={styles.input}
+              autoComplete="off"
             />
             <small className={styles.hint}>A formatação é automática</small>
           </div>
-
-          {/* Selects lado a lado */}
           <div className={styles.selectRow}>
             <div className={styles.selectGroup}>
               <label htmlFor="curso" className={styles.label}>Curso:</label>
@@ -87,14 +95,13 @@ function CadastroPessoal({ onNext }) {
                 className={styles.select}
               >
                 <option value="">Selecione...</option>
-                <option value="AGR">Agropecuária</option>
-                <option value="ADM">Administração</option>
-                <option value="FIN">Finanças</option>
-                <option value="INF">Informática</option>
-                <option value="SER">Energias Renováveis</option>
+                {cursos.map(curso => (
+                  <option key={curso.id} value={curso.sigla}>
+                    {curso.nome}
+                  </option>
+                ))}
               </select>
             </div>
-
             <div className={styles.selectGroup}>
               <label htmlFor="cota" className={styles.label}>Cotas:</label>
               <select
@@ -113,7 +120,6 @@ function CadastroPessoal({ onNext }) {
               </select>
             </div>
           </div>
-
           <button type="submit" className={styles.button}>Próximo</button>
         </form>
       </div>
