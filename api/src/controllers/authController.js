@@ -7,7 +7,7 @@ export default {
       const result = await authService.login(email, senha);
       res.status(200).json(result);
     } catch (err) {
-      res.status(401).json({ error: err.message });
+      res.status(401).json({ error: 'Usuário ou senha inválidos' });
     }
   }
 };

@@ -16,4 +16,8 @@ export default {
   async Excluir(id) {
     return await repositoryAluno.Excluir(id);
   },
+
+  async Estatisticas() {
+    return await repositoryAluno.Estatisticas();
+  },
 };

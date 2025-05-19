@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 
 function Home() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    const saved = localStorage.getItem('sidebar_collapsed');
+    return saved === 'true' ? true : false;
+  });
   const [userName, setUserName] = useState('Administrador');
   const navigate = useNavigate();
 
@@ -11,6 +14,13 @@ function Home() {
     const nome = localStorage.getItem('admin_nome');
     if (nome) setUserName(nome);
   }, []);
+
+  const handleSidebarToggle = () => {
+    setSidebarCollapsed((prev) => {
+      localStorage.setItem('sidebar_collapsed', !prev);
+      return !prev;
+    });
+  };
 
   // Sidebar navigation
   const handleNav = (route) => {
@@ -125,9 +135,9 @@ function Home() {
       {/* Sidebar Toggle */}
       <button
         className={styles.sidebarToggleBtn}
-        onClick={() => setSidebarCollapsed((c) => !c)}
+        onClick={handleSidebarToggle}
         aria-label="Expandir/retrair menu"
-        tabIndex={-1} // Evita foco acidental ao navegar
+        tabIndex={-1}
         type="button"
       >
         <i className={`fas ${sidebarCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'}`}></i>
@@ -135,8 +145,11 @@ function Home() {
 
       {/* Main Content */}
       <div className={`${styles.mainContent} ${sidebarCollapsed ? styles.sidebarCollapsed : ''}`}>
-        <div className={styles.dashboardHeader}>
-          <h1 className={styles.dashboardTitle}>Bem-vindo ao Sistema de Seleção</h1>
+        <div className={styles.dashboardHeader} style={{ justifyContent: 'center' }}>
+          <h1 className={styles.dashboardTitle} style={{ textAlign: 'center', width: '100%' }}>
+            <i className="fas fa-home" style={{ marginRight: 10 }}></i>
+            Bem-vindo ao Sistema de Seleção
+          </h1>
         </div>
         <div className={styles.cardContainer}>
           <div
@@ -179,8 +192,34 @@ function Home() {
             <span>CURSOS</span>
             <p className={styles.cardDescription}>Gerencie cursos e turmas</p>
           </div>
+          <div
+            className={styles.card}
+            tabIndex={0}
+            role="button"
+            onClick={() => navigate('/alunos?editarNotas=1')}
+          >
+            <img src="/img/editar.png" alt="Ícone de notas" /> 
+            <span>EDITAR NOTAS</span>
+            <p className={styles.cardDescription}>Edite as notas de um aluno</p>
+          </div>
         </div>
       </div>
+      {/* Rodapé com versão e contato */}
+      <footer style={{
+        width: '100%',
+        textAlign: 'center',
+        padding: '18px 0 10px 0',
+        color: '#888',
+        fontSize: 14,
+        background: 'none',
+        position: 'fixed',
+        left: 0,
+        bottom: 0,
+        zIndex: 9999,
+        letterSpacing: 0.2
+      }}>
+        Sistema de Seleção v1.0.0 &nbsp;|&nbsp; Desenvolvido por <a href="https://www.instagram.com/jkenteni/" style={{color:'#007a32'}}>Kenteni Alves</a>
+      </footer>
     </div>
   );
 }

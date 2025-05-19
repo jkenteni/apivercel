@@ -24,6 +24,9 @@ function Login() {
       if (dados.nome) {
         localStorage.setItem('admin_nome', dados.nome);
       }
+      if (dados.email) {
+        localStorage.setItem('admin_email', dados.email);
+      }
       navigate('/home');
     } else {
       setErro(dados.error || 'Erro no login');
@@ -38,7 +41,7 @@ function Login() {
             <h1 className="welcome-title">Olá,<br />Bem-Vindo!</h1>
             <p className="welcome-description">
               Sistema desenvolvido para <strong>otimizar o processo de seleção de alunos</strong>,
-              totalmente <strong>criado e implementado por estudantes</strong> da EEEP Padre Bosco de Lima.
+              totalmente <strong>criado e implementado por estudantes</strong> da EEEP Pe. João Bosco de Lima.
             </p>
             <a href="https://www.instagram.com/eeeppejoaoboscodelima/">
             <button className="see-more-btn">Veja Mais</button>

@@ -11,9 +11,13 @@ export default {
   },
   Inserir({ nome, sigla }) {
     return new Promise((resolve, reject) => {
+      // Validação: sigla deve ter exatamente 3 letras
+      if (!/^[A-Za-z]{3}$/.test(sigla)) {
+        return reject(new Error('A sigla deve conter exatamente 3 letras.'));
+      }
       pool.query(
         'INSERT INTO cursos (nome, sigla) VALUES (?, ?)',
-        [nome, sigla],
+        [nome, sigla.toUpperCase()],
         (err, result) => {
           if (err) return reject(err);
           resolve({ mensagem: 'Curso cadastrado com sucesso', id: result.insertId });
@@ -23,9 +27,13 @@ export default {
   },
   Editar(id, { nome, sigla }) {
     return new Promise((resolve, reject) => {
+      // Validação: sigla deve ter exatamente 3 letras
+      if (sigla && !/^[A-Za-z]{3}$/.test(sigla)) {
+        return reject(new Error('A sigla deve conter exatamente 3 letras.'));
+      }
       pool.query(
         'UPDATE cursos SET nome = ?, sigla = ? WHERE id = ?',
-        [nome, sigla, id],
+        [nome, sigla.toUpperCase(), id],
         (err, result) => {
           if (err) return reject(err);
           resolve({ mensagem: 'Curso atualizado com sucesso' });

@@ -85,7 +85,7 @@
   bottom: 0;
   background: linear-gradient(180deg, var(--dark-green) 0%, #003d18 100%);
   color: var(--white);
-  transition: all var(--transition);
+  transition: width var(--transition);
   overflow: hidden;
   z-index: 1100;
   display: flex;
@@ -324,6 +324,20 @@
   opacity: 0.9;
 }
 
+.rodapeSistema {
+  width: 100%;
+  text-align: center;
+  padding: 18px 0 10px 0;
+  color: #888;
+  font-size: 14px;
+  background: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+  letter-spacing: 0.2;
+}
+
 @media (max-width: 992px) {
   .cardContainer {
     grid-template-columns: 1fr 1fr;
@@ -346,6 +360,14 @@
     width: var(--sidebar-width);
     left: 0;
     z-index: 2000;
+    position: fixed;
+    height: calc(100vh - 70px);
+    box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+    background: linear-gradient(180deg, var(--dark-green) 0%, #003d18 100%);
+    transition: width var(--transition);
+  }
+  .sidebar.collapsed {
+    width: var(--sidebar-width-collapsed);
   }
   .sidebarToggleBtn {
     display: none;
@@ -362,9 +384,13 @@
     min-height: 180px;
   }
 }
-@media (max-width: 480px) {
-  .dashboardHeader {
-    flex-direction: column;
-    align-items: flex-start;
+
+@media (min-width: 769px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    height: calc(100vh - 80px);
+    z-index: 1100;
   }
 }

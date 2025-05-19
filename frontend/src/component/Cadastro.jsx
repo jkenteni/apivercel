@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import styles from './Cadastro.module.css';
 import CadastroPessoal from './CadastroPessoal';
+import CadastroNotas from './CadastroNotas';
 
 function Cadastro() {
   const [etapa, setEtapa] = useState(1);
-  const [formulario, setFormulario] = useState({
-    nome: '',
-    cpf: '',
-    cota: '',
-    curso: '',
-  });
+  const [alunoId, setAlunoId] = useState(null);
 
+  // Após cadastro pessoal, salva aluno e vai para notas
   const handleNext = async (dadosPessoais) => {
     try {
       const resposta = await fetch('http://localhost:3000/api/alunos', {
@@ -26,20 +23,32 @@ function Cadastro() {
         return;
       }
 
-      console.log('Aluno cadastrado:', json);
-      setFormulario((prev) => ({ ...prev, ...dadosPessoais }));
-      alert('Cadastro enviado com sucesso!');
+      setAlunoId(json.id); // Salva o id do aluno cadastrado
+      setEtapa(2); // Vai para etapa de notas
     } catch (err) {
       console.error('Erro no front:', err);
       alert('Erro de conexão com o servidor');
     }
   };
 
+  // Salvar notas (futuro: enviar para backend)
+  const handleSalvarNotas = async (notas, media) => {
+    if (!alunoId) return;
+    // Salva as notas e a média no backend
+    await fetch(`http://localhost:3000/api/alunos/${alunoId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ notas, media }),
+    });
+    alert('Notas salvas com sucesso!');
+    // Redirecionar ou resetar se desejar
+  };
+
   return (
-    <div className={styles.cadastroContainer}>
-      {/* Removido o botão Voltar daqui para evitar duplicidade */}
-      <CadastroPessoal onNext={handleNext} />
-    </div>
+    <>
+      {etapa === 1 && <CadastroPessoal onNext={handleNext} />}
+      {etapa === 2 && <CadastroNotas alunoId={alunoId} onSalvar={handleSalvarNotas} />}
+    </>
   );
 }
 

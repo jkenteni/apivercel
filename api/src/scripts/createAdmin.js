@@ -2,9 +2,9 @@ import bcrypt from 'bcryptjs';
 import pool from '../database/connection.js';
 
 // Altere os dados conforme necessário
-const nome = 'Teste da Silva';
+const nome = 'Kenteni Alves';
 const email = 'teste@prof.ce.gov.br';
-const senhaPura = '123456';
+const senhaPura = '123';
 
 async function criarAdmin() {
   const senhaHash = await bcrypt.hash(senhaPura, 10);
@@ -25,4 +25,4 @@ async function criarAdmin() {
 
 criarAdmin();
 
-// node src/scripts/createAdmin.js
+//node src/scripts/createAdmin.js

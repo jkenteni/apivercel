@@ -5,6 +5,9 @@ import Cadastro from './component/Cadastro';
 import PrivateRoute from './component/PrivateRoute';
 import Cursos from './component/Cursos';
 import Busca from './component/Busca';
+import CadastroNotas from './component/CadastroNotas';
+import Relatorios from './component/Relatorios';
+import Configuracoes from './component/Configurações';
 
 function Placeholder({ title }) {
   return (
@@ -42,17 +45,39 @@ function App() {
         } />
         <Route path="/relatorios" element={
           <PrivateRoute>
-            <Placeholder title="Relatórios" />
+            <Relatorios />
           </PrivateRoute>
         } />
         <Route path="/configuracoes" element={
           <PrivateRoute>
-            <Placeholder title="Configurações" />
+            <Configuracoes />
+          </PrivateRoute>
+        } />
+        <Route path="/editar-notas/:id" element={
+          <PrivateRoute>
+            <EditarNotasWrapper />
           </PrivateRoute>
         } />
       </Routes>
     </Router>
   );
+}
+
+// Wrapper para passar props para CadastroNotas em modo edição
+import { useParams, useNavigate } from 'react-router-dom';
+function EditarNotasWrapper() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const handleSalvar = async (notas, media) => {
+    await fetch(`http://localhost:3000/api/alunos/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ notas, media }),
+    });
+    alert('Notas atualizadas com sucesso!');
+    navigate('/alunos');
+  };
+  return <CadastroNotas alunoId={id} onSalvar={handleSalvar} modoEdicao />;
 }
 
 export default App;

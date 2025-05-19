@@ -103,13 +103,18 @@ input:focus, select:focus {
 }
 
 /* Layouts Flexíveis */
-.flex-container {
+.flexContainer {
   display: flex;
   gap: var(--spacing-md);
 }
 
-.flex-container > div {
+.flexContainer > div {
   flex: 1;
+}
+
+.selectGroup {
+  flex: 1;
+  min-width: 180px;
 }
 
 /* Grade de Notas Expandida */
@@ -360,12 +365,12 @@ input:focus, select:focus {
 /* Novo container maior para CadastroPessoal */
 .cadastroPessoalContainer {
   background: var(--white);
-  width: 100%;
-  max-width: 700px;
+  width: 50vw !important;
+  max-width: none !important;
   margin: 40px auto;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
-  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  padding: 2.5rem 3.5rem 2rem 3.5rem; /* Mais espaço nas laterais */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -378,6 +383,13 @@ input:focus, select:focus {
   }
 }
 
+@media (max-width: 1200px) {
+  .cadastroPessoalContainer {
+    max-width: 98vw;
+    padding: 1.2rem 1rem;
+  }
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
   .container {
@@ -387,7 +399,7 @@ input:focus, select:focus {
 }
 
 @media (max-width: 768px) {
-  .flex-container {
+  .flexContainer {
     flex-direction: column;
   }
   
@@ -448,4 +460,12 @@ input:focus, select:focus {
   font-style: italic;
   text-align: center;
   padding: 2rem;
+}
+
+/* Notas - escopo local */
+.subtitle {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  font-weight: 500;
 }

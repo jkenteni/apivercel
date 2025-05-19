@@ -15,7 +15,7 @@ export default {
       const resultado = await cursoService.Inserir(curso);
       res.status(201).json(resultado);
     } catch (error) {
-      res.status(500).json({ erro: 'Erro ao inserir curso' });
+      res.status(400).json({ erro: error.message || 'Erro ao inserir curso' });
     }
   },
   async Editar(req, res) {
@@ -25,7 +25,7 @@ export default {
       const resultado = await cursoService.Editar(id, dados);
       res.status(200).json(resultado);
     } catch (error) {
-      res.status(500).json({ erro: 'Erro ao editar curso' });
+      res.status(400).json({ erro: error.message || 'Erro ao editar curso' });
     }
   },
   async Excluir(req, res) {
