@@ -83,7 +83,7 @@ function Login() {
       </div>
 
       <footer className="page-footer">
-        <a href="https://www.instagram.com/jkenteni/">@jkenteni 2025</a> | Todos os direitos reservados.
+        <a href="https://www.instagram.com/jkenteni/">@jkenteni - @larianyalvess 2025</a> | Todos os direitos reservados.
       </footer>
     </div>
   );
